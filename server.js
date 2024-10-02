@@ -1,7 +1,13 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
+const routerEnvelop = require('./helpers/budget_envelope.js');
 
 const PORT = process.env.PORT || 3000;
+
+app.use(bodyParser.json());
+
+app.use('/envelops', routerEnvelop);
 
 app.get('/', (req, res, next) => {
     res.send("<h1>Hello World!!</h1>");
