@@ -1,10 +1,26 @@
 // Este archivo es para crear un budget envelope
 const  express = require("express");
-const router = express.Router();
+const routerEnvelop = express.Router();
 
 let budget_Array = [];
 
-app.post ('/envelops', (req, res, next) => {
+let lengthArray = 1;
+
+routerEnvelop.post ('/', (req, res, next) => {
     const newBudget = req.body;
-    res.status(201).send();
+    newBudget.id = lengthArray;
+    budget_Array.push(newBudget);
+    lengthArray++;
+    res.status(201).send(newBudget);
+    console.log(newBudget);
 });
+
+routerEnvelop.get('/', (req, res, next) => {
+    if(budget_Array.length > 0) {
+        res.send(budget_Array);
+    } else {
+        res.status(404).send('No items');
+    }
+});
+
+module.exports = routerEnvelop;
