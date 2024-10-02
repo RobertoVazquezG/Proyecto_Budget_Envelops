@@ -23,4 +23,14 @@ routerEnvelop.get('/', (req, res, next) => {
     }
 });
 
+routerEnvelop.get('/:id', (req, res, next) => {
+    const budgetId = req.params.id;
+    const found = budget_Array.find(element => element.id === parseInt(budgetId));
+    if (found) {
+        res.send(found);
+    } else {
+        res.status(404).send("The id does not exists.");
+    }
+});
+
 module.exports = routerEnvelop;
