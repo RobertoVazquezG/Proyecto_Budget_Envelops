@@ -33,4 +33,16 @@ routerEnvelop.get('/:id', (req, res, next) => {
     }
 });
 
+routerEnvelop.put('/:id/:withdraw', (req, res, next) => {
+    const budgetId = req.params.id;
+    const withdrawal = parseInt(req.params.withdraw);
+    const found = budget_Array.find(element => element.id === parseInt(budgetId));
+    if (found && found.Categorie && typeof found.Limit === 'number') {
+        found.Limit = found.Limit - withdrawal;
+        res.send(found);
+    } else {
+        res.status(400).send("The request cannot be proccesed.");
+    }
+});
+
 module.exports = routerEnvelop;
