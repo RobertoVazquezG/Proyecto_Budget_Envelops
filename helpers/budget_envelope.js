@@ -45,4 +45,16 @@ routerEnvelop.put('/:id/:withdraw', (req, res, next) => {
     }
 });
 
+routerEnvelop.delete('/:id', (req, res, next) => {
+    const budgetId = parseInt(req.params.id);
+    const foundIndex = budget_Array.findIndex(element => element.id === budgetId);
+    console.log(foundIndex);
+    if (foundIndex !== -1) {
+        budget_Array.splice(foundIndex, 1);
+        res.status(200).send("Item deleted correctly.");
+    } else {
+        res.status(404).send("The item does not exists. Try with a diferent id");
+    }
+});
+
 module.exports = routerEnvelop;
