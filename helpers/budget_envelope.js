@@ -1,4 +1,4 @@
-// Este archivo es para crear un budget envelope
+// Este archivo es para crear un budget envelop
 const  express = require("express");
 const routerEnvelop = express.Router();
 
@@ -8,11 +8,15 @@ let lengthArray = 1;
 
 routerEnvelop.post ('/', (req, res, next) => {
     const newBudget = req.body;
-    newBudget.id = lengthArray;
-    budget_Array.push(newBudget);
-    lengthArray++;
-    res.status(201).send(newBudget);
-    console.log(newBudget);
+    if(typeof newBudget.Category === 'string' && newBudget.Category !== "" && typeof newBudget.Limit === 'number'){
+        newBudget.id = lengthArray;
+        budget_Array.push(newBudget);
+        lengthArray++;
+        res.status(201).send(newBudget);
+        console.log(newBudget);
+    } else {
+        res.status(400).send();
+    }
 });
 
 routerEnvelop.get('/', (req, res, next) => {
