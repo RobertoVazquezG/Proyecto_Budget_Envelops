@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 app.use('/envelops', routerEnvelop);
 
 app.get('/', (req, res, next) => {
-    res.send("<h1>Hello World!!</h1>");
+    res.send("<h1>Conection OK</h1>");
 });
 
 app.listen(PORT, () => {
