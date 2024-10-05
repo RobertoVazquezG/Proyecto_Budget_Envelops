@@ -41,7 +41,7 @@ routerEnvelop.put('/:id/:withdraw', (req, res, next) => {
     const budgetId = parseInt(req.params.id);
     const withdrawal = parseInt(req.params.withdraw);
     const found = budget_Array.find(element => element.id === budgetId);
-    if (found && typeof withdrawal === 'number' && withdrawal < found.Limit) {
+    if (found && typeof withdrawal === 'number' && withdrawal <= found.Limit) {
         found.Limit = found.Limit - withdrawal;
         res.send(found);
     } else {
@@ -57,7 +57,7 @@ routerEnvelop.delete('/:id', (req, res, next) => {
         budget_Array.splice(foundIndex, 1);
         res.status(200).send("Item deleted correctly.");
     } else {
-        res.status(404).send("The item does not exists. Try with a diferent id");
+        res.status(404).send("The item does not exists. Try with a diferent id.");
     }
 });
 
