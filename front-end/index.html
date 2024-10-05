@@ -5,7 +5,6 @@
         <h1>Personal Budget Envelop</h1>
     </head>
     <body>
-        <section id="form">
             <h2>Pulsa el siguiente botón para comprobar conexión con el servidor.</h2>
             <p id="testOk"></p>
             <button id="test">TEST</button>
@@ -15,8 +14,29 @@
             <label for="Limit">Limit of budget: </label><input type="number" name="Limit" id="Limit" step="100" min="0">
             <br>
             <button id="sendButton">Enviar</button>
-            <p id="parr"></p>
-        </section>
+            <h3>Se ha creado el siguiente budget envelop: </h3>
+            <textarea id="budgetCreated" name="budgetCreated" cols="20" rows="7" readonly></textarea>
+            <h2>Esta sección es para mostrar todas la informacion solicitada de las budget envelops creadas.</h2>
+            <textarea id="budgetRequested" name="budgetRequested" cols="25" rows="20" readonly></textarea>
+            <br>
+            <button id="getBudgets">Solicitar todas</button>
+            <h2>Esta sección es para solicitar una budget envelop por id.</h2>
+            <label for="getId">Id de budget: </label><input type="number" name="getId" id="getId" min="0">
+            <br>
+            <button id="getBudgetsId">Solicitar</button>
+            <h2>Esta sección es para retirar fondos de una budget envelop, usando el id de la seccion anterior.</h2>
+            <label for="withdrawId">Cantidad a retirar:  </label><input type="number" name="withdrawId" id="withdrawId" min="0">
+            <br>
+            <button id="withdrawIdButton">Retirar fondos</button>
+            <h2>Esta sección es para borrar un budget envelop, usando el id especificado.</h2>
+            <label for="deleteId">Id de budget envelop a borrar: </label><input type="number" name="deleteId" id="deleteId" min="0">
+            <br>
+            <button id="deleteIdButton">Borrar budget envelop</button>
+            <h2>Esta sección es para mover los fondos de un budget envelop hacia otro budget, usando los id coreespondientes.</h2>
+            <label for="moveFromId">Extraer fondos de id: </label><input type="number" name="moveFromId" id="moveFromId" min="0">
+            <label for="moveToId">Mover fondos hacia id: </label><input type="number" name="moveToId" id="moveToId" min="0">
+            <br>
+            <button id="moveBudgetButton">Mover fondos</button>
         <script src="./script.js"></script>
     </body>
 </html>
